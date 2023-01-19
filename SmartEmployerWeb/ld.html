@@ -1,0 +1,253 @@
+<head>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+
+</script>
+</head>
+<style>
+  html, body,  video canvas {
+      margin: 0!important;
+      padding: 0!important;
+    
+  }
+#time{color:green;}
+video{width: 100%;
+height:42%;}
+
+/* Default styles first then media queries */
+@media screen and (min-width: 200px)  {
+.board{height:50%;}
+video{padding-top:5% !important;}
+h1{font-size: 6rem;} }
+@media screen and (min-width: 400px)  {
+.board{height:50%;}
+video{padding-top:5% !important;}
+ h1{font-size: 6rem;}}
+@media screen and (min-width: 600px)  {
+.board{height:50%;}
+video{padding-top:5% !important;}
+ h1{font-size: 6rem;}}
+@media screen and (min-width: 1000px) {
+.board{height:70%;} 
+video{padding-top:0% !important;}
+h1{font-size: 6rem;}
+}
+@media screen and (min-width: 1400px) { 
+.board{height:70%;}
+video{padding-top:0% !important;}
+h1{font-size: 6rem;}
+}
+</style>
+<br>
+
+<div class="container text-center">
+<div class="row">
+<div class="col-lg-4 col-md-4 col-sm-4">
+<button  style="margin:auto;margin-bottom:2%;border-radius:25px;background-color: #2C33BF;color: white;" id="btn-start-recording">Start Recording</button>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+<button style="margin:auto;margin-bottom:2%;border-radius:25px;background-color: #2C33BF;color: white;" id="btn-stop-recording" disabled >Stop Recording</button>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+<button style="margin:auto;margin-bottom:2%;border-radius:25px;background-color: #2C33BF;color: white;"id="btn-pause-recording" disabled>Pause Recording</button>
+</div>
+</div>
+
+<hr>
+<div class="container">
+<div class="row">
+<!--Board-->
+<div class="col-lg-8 col-md-8 col-sm-12" >
+<div class="container-fluid board text-center " style="color:white;background-color: #2C33BF;display: flex;
+justify-content: center;
+align-items: center;">
+<div class="row ">
+<h1>What are the pillars of OOP?<h1>
+</div>
+</div>
+
+<!--Transcript-->
+<h2>Answer</h2>
+ <div  id="output" class="hide"></div>
+<!--Transcript End-->
+
+</div>
+<!--Board End-->
+<!--Aside Column-->
+<div class="col-lg-4 col-md-4 col-sm-12">
+<!--Progress Row-->
+<div class="row">
+
+<!--Timer-->
+<h1 style="color: #2C33BF;">Time Left</h1>
+ <div> <h1><span id="time">05:00</span></h1></div>
+<!--Timer End-->
+</div> <!--Progress Row End-->
+
+
+<!--Video Row-->
+<div class="row">
+  <video controls autoplay playsinline muted > </video>
+  </div>
+  
+  <!--Video Row End-->
+</div> <!--Aside Column End-->
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.6.2/RecordRTC.min.js"></script>
+<script>
+  document.addEventListener("visibilitychange", function() {
+let timeout;
+if (document.hidden  || document.visibilityState != "visible" || window.onblur) {
+
+       alert("Opening/using another tab or application during interview is prohibitted. Your interview is being terminated in 5sec");
+       timeout = setTimeout(window.close, 5000);
+      
+      } 
+  
+ });
+
+window.addEventListener("blur", function() {
+let timeout;
+if ( window.onblur=="true") {
+
+       alert("Opening/using another tab or application during interview is prohibitted. Your interview is being terminated in 5sec");
+       timeout = setTimeout(window.close, 5000);
+       
+      } 
+  
+ });
+
+
+
+
+var video = document.querySelector('video');
+
+function captureCamera(callback) {
+  navigator.mediaDevices.getUserMedia({ audio:true, video: true }).then(function(camera) {
+      callback(camera);
+
+  }).catch(function(error) {
+     
+      alert('Unable to capture your camera. Please check console logs.');
+      console.error(error);
+  });
+}
+
+function stopRecordingCallback() {
+
+  video.srcObject = null;
+  var blob = recorder.getBlob();
+  video.src = URL.createObjectURL(blob);
+  recorder.camera.stop();
+  var a = document.createElement('a');
+  document.body.appendChild(a);
+  a.style = 'display: none';
+  a.href = video.src;
+  a.download = 'video.webm';
+  a.click();
+}
+
+var recorder; // globally accessible
+
+var recognition;
+document.getElementById('btn-start-recording').onclick = function() {
+
+  var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+if(minutes<3){document.getElementById('time').style.color = "red";};
+
+        display.textContent = minutes + ":" + seconds;
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+
+
+}
+
+  this.disabled = true;
+  captureCamera(function(camera) {
+      video.srcObject = camera;
+
+      recorder = RecordRTC(camera, {
+          type: 'video'
+      });
+
+      var recordingDuration =  2400000;
+      recorder.setRecordingDuration(recordingDuration).onRecordingStopped(stopRecordingCallback);
+
+      recorder.startRecording();
+
+
+      // release camera on stopRecording
+      recorder.camera = camera;
+
+      document.getElementById('btn-stop-recording').disabled = false;
+      document.getElementById('btn-pause-recording').disabled = false;
+      var Content = "";
+      
+      // new speech recognition object
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
+
+          
+  recognition.continuous = true;
+            recognition.onresult = function(event) {
+            var current = event.resultIndex;
+ 
+             
+                    var transcript = event.results[current][0].transcript;
+                    var confidence = event.results[0][0].confidence;
+
+             Content += transcript;
+
+                    output.innerHTML =  Content ;
+                    output.classList.remove("hide");
+          
+  };
+recognition.start();
+  });
+};
+
+document.getElementById('btn-stop-recording').onclick = function() {
+  this.disabled = true;
+  recorder.stopRecording(stopRecordingCallback);
+recognition.stop();
+};
+
+
+document.getElementById('btn-pause-recording').onclick = function() {
+  this.disabled = true;
+
+  if(this.innerHTML === 'Pause Recording') {
+      recorder.pauseRecording();
+      this.innerHTML = 'Resume Recording';
+  }
+  else {
+      recorder.resumeRecording();
+      this.innerHTML = 'Pause Recording';
+  }
+
+  setTimeout(function() {
+      document.getElementById('btn-pause-recording').disabled = false;
+  }, 2000);
+};
+</script>
+
+
+		
+<footer style="margin-top: 20px;"><small id="send-message"></small></footer>
+<script src="https://www.webrtc-experiment.com/common.js"></script>

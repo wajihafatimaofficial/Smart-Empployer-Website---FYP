@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+   <script>
+      function disableBack() { window.history.forward(); }
+        setTimeout("disableBack()", 0);
+        window.onunload = function () { null };
+        
+    var x = localStorage.getItem("email");
+    var y = localStorage.getItem("password");
+    var z = localStorage.getItem("role");
+if (x=="" || y=="" || z==""){
+
+   window.location.replace("about.html");
+
+}
+
+else{
+
+if (z=='candidate')
+{
+   window.location.replace("candidateLogin.html");
+}
+if (z=='employer'){
+   window.location.replace("employerLogin.html");
+}
+
+
+
+if (x!="" || y!="" || z=="candidate"){
+
+window.location.replace("jobFeed.php");
+}
+
+if (x!="" || y!="" || z=="employer"){}
+
+window.location.replace("employerDashboard.php");
+}
+    </script> 
+ <body>
+
+
+ 
+
+  </body>
+</html>

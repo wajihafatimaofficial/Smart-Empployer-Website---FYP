@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Blog- Smart Employer</title>
+  <link rel="shortcut icon" href="images/icon.png" >
+  <meta name="theme-color" content="#F2F2F2">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css" >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  
+  
+</head>
+<script>
+  $(document).ready(function () {
+
+var x = localStorage.getItem("email");
+var y = localStorage.getItem("password");
+var z = localStorage.getItem("role");
+
+if (x=="" || y=="" || z==""){
+document.getElementById("hideProfile").style.display = "none";
+
+
+}
+else{
+document.getElementById("hideBlog").style.display = "none";
+document.getElementById("hidePricing").style.display = "none";
+document.getElementById("hideContact").style.display = "none";
+document.getElementById("hideAbout").style.display = "none";
+document.getElementById("hideFAQ").style.display = "none";
+document.getElementById("hideLoggedout").style.display = "none";
+document.getElementById("hideProfile").style.display = "inherit";
+}
+}); 
+</script>
+
+
+  <nav class="navbar navbar-inverse" id="navbar"  role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myidname">    
+          <span class="icon-bar"></span>    
+          <span class="icon-bar"></span>    
+          <span class="icon-bar"></span>    
+      </button>    
+      <a class="navbar-brand" href="index.html"><img  src="images/selogo.png" class="logo"></a>
+      </div>
+      <div class="navbar-collapse collapse" id="myidname">  
+      <ul class="nav navbar-nav " id="hideNav">
+        <li ><a href="about.html">Home</a></li>
+        
+        <li ><a href="Pricing.html">Pricing</a></li>
+        <li class="active"><a href="Blog.html">Blog</a></li>
+        <li><a href="FAQs.html">FAQs</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" id="hideLoggedout">
+       
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-user"></span> Sign Up
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" > 
+
+            <li><a class="dropdown-item" href="employerSignup.html">As Employer</a></li>
+            <li><a class="dropdown-item" href="candidateSignup.html">As JobSeeker</a></li>
+           
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-log-in"></span> Log In
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" > 
+  
+            <li><a class="dropdown-item" href="employerLogin.html">As Employer</a></li>
+            <li><a class="dropdown-item" href="candidateLogin.html">As JobSeeker</a></li>
+           
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" id="hideProfile">
+        <li> <a href="jobFeed.php"><span class="glyphicon glyphicon-home" ></span> Home</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-bell"></span> Notifications</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-user"></span> Me
+            <span class="caret"></span>
+          </a>
+         
+          <ul class="dropdown-menu" > 
+  
+            <li><a class="dropdown-item" href="candidateProfile.html">View Profile</a></li>
+            <li><a class="dropdown-item" href="myJobs.html">My Jobs</a></li>
+            <li><a class="dropdown-item" href="FAQs.html">FAQs</a></li>
+            <li><a class="dropdown-item" id="logout" href="#">Log Out</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>   
+    </div>
+  </nav>
+
+  <body>
+    <button onclick="topFunction()" id="scrollBtn"><span class="glyphicon glyphicon-chevron-up"></span></button>
+  
+  <div class="container" >
+    <br>
+    <h2 class="mainheadings">Get To Know Smart Employer</h2>
+    <div class="blog-para">
+    <p >With an average of 5000+ jobs posted every day, it becomes really difficult for jobseekers to find the right one that suits their skills and interests. Employers on the other hand are spared the trouble of finding candidates for their openings. However, with Smart Employer, they can find their dream jobs and perfect candidate in the blink of an eye.</p>
+    
+    <p >Amazing right? </p>
+    <p>Wondering how we are providing excellence and improving the job hunting and recruitment journey? </p>
+    <p>But first let’s know who we are….</p>
+<div class="row">
+  <div class="col-xs-12 col-md-6 col-sm-6 col-lg-8">
+    <h3>About Smart Employer</h3>
+    <p>Smart Employer is a platform that bridges the gap between employers and jobseekers, by giving them a chance to find the best out of their interest in a time-efficient manner.</p>
+    </div>
+    <div class="col-xs-12 col-md-6 col-sm-6 col-lg-4">
+      <img  alt="Remote autmated interviews illustration" src="images/logo.png" width="50%" class="center">
+    </div></div>
+
+
+    <h3>How we do it?</h3>
+    <p>Smart Employer offer a suite of innovative solutions that can help you find the perfect candidate or a perfect job anywhere in the world. We use AI and cutting-edge technology to make sure that we always provide high quality services to our customers. </p>
+    <h3>How are we different?</h3>
+
+    <ul class="nav nav-tabs " id="myTab">
+      <li class="active" >
+        <a class="nav-link" data-toggle="tab" href="#employer" >For Employer</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#jobseekers" >For Job-Seekers</a>
+      </li>
+      
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="employer" role="tabpanel" >
+
+<h4>User Profile</h4>
+<p>Smart Employer lets you create ‘employer’ profile, maintain it and perform associated operations. </p>
+
+<h4>Job Listings</h4>
+<p>Aren’t drafting job posts time-consuming? But, you don’t have to worry. Because Smart Employer lets you design quick job posts by providing multiple options and menus. Now posts your next job in just a minute!</p>
+
+<h4>Application Tracking</h4>
+<p>Tired of reviewing CVs for hours or paying hefty sums for CV reviews? Not anymore! The Smart Employer Application Tracking quickly and accurately let you know if a candidate is suitable for the posted job by analysing his/her profile and looking for matches with the JD within seconds.</p>
+
+<h4>Scheduling</h4>
+<p>Scheduling interviews has always been a problem. But, with Smart Employer scheduling interviews is a piece of cake.</p>
+
+<h4>Automated Interview</h4>
+<p>Interviewing candidates has always been a hassle. Interviewing large number of candidates, availability issues, scheduling alignment, etc. has just cause headaches. Analysing this situation, Smart Employer has incorporated Automated Interview in the recruitment journey to minimize employer’s pain. Automated Interview let employer’s conduct online interviews without their involvement in the interview session. Employers can set interview questions and let the technology do its magic. During this interview session, candidate’s answers are judged via linguistic detection as well as facial expressions also adds to the interview performance.</p>
+      </div>
+
+
+      <div class="tab-pane fade" id="jobseekers" role="tabpanel">
+        <h4>User Profile</h4>
+        <p>Smart Employer lets you create ‘job-seeker’ profile, maintain it and perform associated operations. </p>
+        
+        <h4>Job Feed</h4>
+<p>You don't need to search for your dream job for years anymore! Smart Employer is here to help you find the best match according to your requirements.  All you need is to create an account and meet a potential perfect matches today!</p>
+
+
+<h4>One-Click Application</h4>
+<p>Do you also wish everything was just a click away? Smart Employer is here to solve that problem. You don’t have to attach your CV everytime applying for a job. With our ultimate platform, you just have to go through job posts and click “Apply” on the one you are interested in.</p>
+
+<h4>Alerts</h4>
+<p>Job-Seekers always want to listen back from recruiters and be alert at every phase. Smart Employer has taken care of this need and have provided alert systems so that job-seekers get notified at every stage.</p>
+
+<h4>Automated Interview</h4>
+<p>Appearing at interviews is no less of a problem. Job-Seekers have to face numerous problems such as availability issues, commute, and scheduling alignment. Analysing this situation, Smart Employer has incorporated Automated Interview to minimize job-seeker’s pain. Automated Interview let job-seekers to appear at interviews online without worrying about travelling expense, employer bias, etc. During this interview session, candidates are displayed some questions set by the employer which they have to answer at their ease in English medium (currently).</p>
+
+
+      </div>
+      
+    </div>
+
+  
+  
+  </div>
+</div>   
+      
+   <!-- Footer -->
+
+   <footer class="text-center text-white subfooter" id="subfooter">
+    <!-- Grid container -->
+    <div class="container p-4 ">
+      <!-- Section: Text -->
+      <section class="mb-4">
+      <!-- Section: Text -->
+      <!-- Section: Links -->
+      <section class="">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6 ">
+            <h4 class="text-uppercase">Quick Links</h4>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="about.html" class="text-white">About Us</a>
+              </li>
+              <li>
+                <a href="contact.html" class="text-white">Contact Us</a>
+              </li>
+              <li>
+                <a href="Pricing.html" class="text-white">Pricing</a>
+              </li>
+              <li>
+                <a href="FAQs.html" class="text-white">FAQs</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6">
+            <h4 class="text-uppercase">Explore More</h4>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="Blog.html" class="text-white">Blog</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Hire Candidates</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Hiring Glossary</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Latest Jobs</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6">
+            <h4 class="text-uppercase">Policies</h4>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="#!" class="text-white">Cookies</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Terms and Conditions</a>
+              </li>
+              <li>
+                <a href="PrivacyPolicy.html" class="text-white">Privacy Policy</a>
+              </li>
+              <li>
+                <a href="TermsofUse.html" class="text-white">Terms of Use</a>
+              </li>
+            </ul>
+          </div>
+          <!--Grid column-->
+  
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6">
+            <h4 class="text-uppercase">Find Us On</h4>
+  
+            <ul class="list-unstyled mb-0">
+              <li>
+                <a href="#!" class="text-white">Facebook</a>
+              </li>
+              <li>
+                <a href="#!" class="text-white">Instagram</a>
+              </li>
+              <li>
+                <a href="https://twitter.com/smart_employer?s=20&t=_5xA0h_j3rWeNsDPNsv3cQ" class="text-white">Twitter</a>
+              </li>
+
+            </ul>
+          </div>
+          <!--Grid column-->
+         
+        </div>
+        <!--Grid row-->
+            <!--Grid row new-->
+   
+          
+            <div class="row" style=" display: flex; justify-content: center;">
+              <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+               <h4 class="text-uppercase">Download Now</h4>
+     
+               <ul class="list-unstyled mb-0">
+                 <li>
+                   <div> <a href='https://play.google.com/store/apps/details?id=com.stagescycling.stages'>
+                     <img 
+                       class="android" 
+                       alt='Get it on Google Play' 
+                       src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' />
+                   </a>
+                 </div>
+               </div>
+
+                 </li>
+               </ul>
+             </div>
+              <!--Grid row new end-->
+         <!--Grid row new-->
+        <div class="row" id="tselect" style=" display: flex; justify-content: center;" >
+        
+          <div   id="google_translate_element"></div>
+          </div>
+           <!--Grid row new end-->
+          
+      </section>
+      <!-- Section: Links -->
+
+
+     
+
+    </div>
+    <!-- Grid container -->
+ 
+
+      <!-- Copyright -->
+      <div class="text-center p-3 copyrightfooter" id="copyrightfooter" style="background-color: #2C33BF !important;">
+        Copyright &copy; <script>document.write(new Date().getFullYear())</script>
+        <a class="text-white" href="about.html">SmartEmployer</a>
+      </div>
+      <!-- Copyright -->
+   </footer>
+  <!-- Footer -->
+      
+      <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      <script src="scripting.js"></script>
+  <script src="scrollScript.js"></script>
+     
+      
+      </body>
+      </html>

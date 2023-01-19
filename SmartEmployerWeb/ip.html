@@ -1,0 +1,480 @@
+<head>
+
+  <meta name="theme-color" content="#F2F2F2">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+
+canvas {
+  position: fixed;
+  width: 400px;
+  height: auto;
+  top: 0;
+}
+ video{display: block;}
+
+
+ .removed {
+ 	display: none;
+ }
+
+ .invisible {
+ 	opacity: 0.2;
+ }
+
+ .facial-main {
+
+ 	display: flex;
+
+ }
+
+
+ .camView {
+ 	z-index: 10;
+height: 330px;;
+ 	width: 400px;
+ 	border: none;
+ 	margin: 0px;
+ 	background: white;
+ 	cursor: pointer;
+ 	box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+ 	border-top-left-radius: 15px;
+ 	border-top-right-radius: 15px;
+ }
+
+ .cam_detail_main {
+ 	position: relative;
+ 	left: 225px;
+ 	box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+ 	padding: 15px 15px;
+ 	padding-left: 30px;
+ 	width: 250px;
+ 	background: #3437be;
+ 	border-top-left-radius: 15px;
+ 	border-bottom-left-radius: 15px;
+ 	font-family: "JetBrains Mono", monospace;
+ 	transition: left 2s;
+ }
+
+ .cam_detail_main h1 {
+ 	font-size: 1.4rem;
+ 	color: #11324D;
+ }
+
+ .cam_detail_main span {
+ 	margin-bottom: 10px;
+ }
+
+ .cam_detail_main a {
+ 	display: block;
+ 	margin-top: 5px;
+ 	margin-bottom: 5px;
+ 	text-decoration: none;
+ 	margin-left: 20px;
+ }
+
+ .cam_chart_main {
+ 	position: relative;
+ 	
+ 	box-shadow: 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+ 	border-bottom-right-radius: 15px;
+ 	border-top-right-radius: 15px;
+ 	padding: 15px 15px;
+ 	width: 250px;
+	 height: 330px;
+ 	background: #3437be;
+ 	transition: left 2s;
+ }
+
+ .cam_bar_text {
+ 	margin-bottom: 3px;
+ 	margin-top: 3px;
+ 	font-family: "JetBrains Mono", monospace;
+
+	 color:white;
+ }
+
+ .cam_bar_main {
+ 	height: 15px;
+ 	width: 200px;
+ 	background-color: lightgrey;
+ }
+
+ .cam_bar_sub {
+ 	height: 15px;
+ 	width: 30%;
+ 	transition: width 1s;
+ 	background-color: #ffffff;
+ }
+
+ .camView p {
+ 	position: absolute;
+ 	padding: 5px;
+ 	background-color: rgba(255, 111, 0, 0.85);
+ 	color: #FFF;
+ 	border: 1px dashed rgba(255, 255, 255, 0.7);
+ 	z-index: 2;
+ 	font-size: 12px;
+ }
+
+ .camTitle {
+ 	display: flex;
+ 	justify-content: center;
+ 	padding: 5px 10px;
+ 	background: #11324D;
+ 	color: #E7E0C9;
+ 	font-family: "JetBrains Mono", monospace;
+ 	font-size: 1.2em;
+ 	border-top-left-radius: 15px;
+ 	border-top-right-radius: 15px;
+ }
+
+ .camBox {
+ 	position: relative;
+
+ }
+
+
+ .cambutton {
+ 	align-items: center;
+ 	appearance: none;
+ 	background-color: #FCFCFD;
+ 	border-radius: 4px;
+ 	border-width: 0;
+ 	box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+ 	box-sizing: border-box;
+ 	color: #36395A;
+ 	cursor: pointer;
+ 	display: none;
+ 	font-family: "JetBrains Mono", monospace;
+ 	height: 48px;
+ 	justify-content: center;
+ 	line-height: 1;
+ 	list-style: none;
+ 	overflow: hidden;
+ 	padding-left: 16px;
+ 	padding-right: 16px;
+ 	position: relative;
+ 	text-align: left;
+ 	text-decoration: none;
+ 	transition: box-shadow .15s, transform .15s;
+ 	user-select: none;
+ 	-webkit-user-select: none;
+ 	touch-action: manipulation;
+ 	white-space: nowrap;
+ 	will-change: box-shadow, transform;
+ 	font-size: 18px;
+ 	margin-bottom: 35px;
+ }
+
+ .cambutton:focus {
+ 	box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+ }
+
+ .cambutton:hover {
+ 	box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+ 	transform: translateY(-2px);
+ }
+
+ .cambutton:active {
+ 	box-shadow: #D6D6E7 0 3px 7px inset;
+ 	transform: translateY(2px);
+ }
+
+
+ .camInstruction {
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	width: 300px;
+ 	height: 330px;
+ 	text-align: center;
+ 	display: flex;
+ 	/* 		display: none; */
+ 	justify-content: center;
+ 	align-items: center;
+ 	background: #3437be;
+ }
+
+ #camiText {
+ 	display: block;
+ 	color: #E05D5D;
+ 	font-size: 1.3rem;
+ 	font-family: 'Inconsolata', monospace;
+ }
+
+#time{color:green;}
+video{width: 100%;
+height:100%;}
+
+/* Default styles first then media queries */
+@media screen and (min-width: 200px)  {
+.board{height:50%;}
+video{padding-top:0% !important;}
+h1{font-size: 6rem;} }
+@media screen and (min-width: 400px)  {
+.board{height:50%;}
+video{padding-top:0% !important;}
+ h1{font-size: 6rem;}}
+@media screen and (min-width: 600px)  {
+.board{height:50%;}
+video{padding-top:5% !important;}
+ h1{font-size: 6rem;}}
+@media screen and (min-width: 1000px) {
+.board{height:70%;} 
+video{padding-top:0% !important;}
+h1{font-size: 6rem;}
+}
+@media screen and (min-width: 1400px) { 
+.board{height:70%;}
+video{padding-top:0% !important;}
+h1{font-size: 6rem;}
+}
+</style>
+
+<br>
+
+<div class="container text-center">
+<div class="row">
+<div class="col-lg-4 col-md-4 col-sm-4">
+<button  style="margin:auto;margin-bottom:2%;border-radius:25px;background-color: #2C33BF;color: white;" id="btn-start-recording">Start Recording</button>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+<button style="margin:auto;margin-bottom:2%;border-radius:25px;background-color: #2C33BF;color: white;" id="btn-stop-recording" >Stop Recording</button>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4">
+<button style="margin:auto;margin-bottom:2%;border-radius:25px;background-color: #2C33BF;color: white;"id="btn-pause-recording" disabled>Pause Recording</button>
+</div>
+</div>
+
+<hr>
+<div class="container">
+<div class="row">
+<!--Board-->
+<div class="col-lg-8 col-md-8 col-sm-12" >
+<div class="container-fluid board text-center " style="color:white;background-color: #2C33BF;display: flex;
+justify-content: center;
+align-items: center;">
+<div class="row ">
+<h1>State the difference between span tag and div tag in HTML5?<h1>
+</div>
+
+
+</div>
+<!--Transcript-->
+<div class="row ">
+<h2>Answer</h2>
+ <div  id="output" class="hide"></div>
+</div>
+<!--Transcript End-->
+
+</div>
+<!--Board End-->
+
+<!--Aside Column-->
+<div class="col-lg-4 col-md-4 col-sm-12">
+<!--Progress Row-->
+<div class="row">
+
+<!--Timer-->
+<h1 style="color: #2C33BF;">Time Left</h1>
+ <div> <h1><span id="time">05:00</span></h1></div>
+<!--Timer End-->
+</div> <!--Progress Row End-->
+<div class="row"><!--ER Row-->
+
+  <canvas id="canvas">Canvas Not Supported</canvas>
+
+<div class="web-project-title" style="color: #f58634;">  <div  id="output" class="hide"></div></div>
+
+	  <div class="facial-main"><!--Video Row-->
+	  
+		<div id="liveView" class="camView">
+		 
+		  <!--cam box-->
+		  <div class="camBox">
+			<canvas id="webcam_canvas" width="640" height="475" style="margin:0; display: none">Canvas not
+			  supported</canvas>
+			<video id="webcam" autoplay muted width="640" height="330"></video>
+			<!--cam int-->
+			<div class="camInstruction" id="caminstruct">
+			  <div style="text-align: center;">
+				<button id="webcamButton" class="cambutton">Enable Webcam</button><br />
+				<span id="camiText">Loading Models</span>
+			  </div>
+			</div><!--cam int end-->
+		  </div>	  <!--cam box end-->
+		</div>
+		<div class="cam_chart_main" id="cam_chart_main">
+		  <div class="cam_bar">
+			<div class="cam_bar_text">
+			  Angry
+			</div>
+			<div class="cam_bar_main">
+			  <div class="cam_bar_sub" id="angry">
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="cam_bar">
+			<div class="cam_bar_text">
+			  Disgust
+			</div>
+			<div class="cam_bar_main">
+			  <div class="cam_bar_sub" id="disgust">
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="cam_bar">
+			<div class="cam_bar_text">
+			  Fear
+			</div>
+			<div class="cam_bar_main">
+			  <div class="cam_bar_sub" id="fear">
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="cam_bar">
+			<div class="cam_bar_text">
+			  Happy
+			</div>
+			<div class="cam_bar_main">
+			  <div class="cam_bar_sub" id="happy">
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="cam_bar">
+			<div class="cam_bar_text">
+			  Sad
+			</div>
+			<div class="cam_bar_main">
+			  <div class="cam_bar_sub" id="sad">
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="cam_bar">
+			<div class="cam_bar_text">
+			  Surprise
+			</div>
+			<div class="cam_bar_main">
+			  <div class="cam_bar_sub" id="surprise">
+			  </div>
+			</div>
+		  </div>
+
+		  <div class="cam_bar">
+			<div class="cam_bar_text">
+			  Neutral
+			</div>
+			<div class="cam_bar_main">
+			  <div class="cam_bar_sub" id="neutral">
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  
+	</div><!--Video Row End-->
+
+
+</div><!--ER Row End-->
+
+</div> <!--Aside Column End-->
+</div><!--main row end-->
+</div><!--main comtainer end-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.6.2/RecordRTC.min.js"></script>
+<script>
+	
+  document.addEventListener("visibilitychange", function() {
+let timeout;
+if (document.hidden  || document.visibilityState != "visible" || window.onblur) {
+
+       alert("Opening/using another tab or application during interview is prohibitted. Your interview is being terminated in 5sec");
+       timeout = setTimeout(window.close, 5000);
+      
+      } 
+  
+ });
+
+window.addEventListener("blur", function() {
+let timeout;
+if ( window.onblur=="true") {
+
+       alert("Opening/using another tab or application during interview is prohibitted. Your interview is being terminated in 5sec");
+       timeout = setTimeout(window.close, 5000);
+       
+      } 
+  
+ });
+
+ function stopRecordingCallback() {
+
+video.srcObject = null;
+var blob = recorder.getBlob();
+video.src = URL.createObjectURL(blob);
+recorder.camera.stop();
+var a = document.createElement('a');
+document.body.appendChild(a);
+a.style = 'display: none';
+a.href = video.src;
+a.download = 'video.webm';
+a.click();
+}
+
+
+document.getElementById('btn-start-recording').onclick = function() {
+
+  var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+if(minutes<3){document.getElementById('time').style.color = "red";};
+
+        display.textContent = minutes + ":" + seconds;
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+
+
+}
+
+this.disabled = true;
+ 
+     
+
+      document.getElementById('btn-stop-recording').disabled = false;
+      document.getElementById('btn-pause-recording').disabled = false;
+
+ 
+
+};
+
+</script>
+
+
+ 
+  <!-- Import TensorFlow.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/3.21.0/tf.min.js" integrity="sha512-bcR37G0HCDLzb7nxxq00We0ZxU4uo8DjPaNsr5B2vIzODU5jvWU+2v4UQ3nTJhgWbwWpjN/XgSyQI+wZxoZNsA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- Load the coco-ssd model to use to recognize things in images -->
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
+
+  <script src="tensorflow.js"></script>
+
+<footer style="margin-top: 20px;"><small id="send-message"></small></footer>
+<script src="https://www.webrtc-experiment.com/common.js"></script>

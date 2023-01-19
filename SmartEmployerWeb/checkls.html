@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>The Window Object</h1>
+<h2>The localStorage Property</h2>
+
+<p>Saved name is:</p>
+<p id="demo"></p>
+
+<script>
+
+// Retrieve
+document.getElementById("demo").innerHTML = localStorage.getItem("url1");
+if(window.location.href!=="url1"){
+console.log('not same');
+}
+//localStorage.clear();
+</script>
+
+</body>
+</html>

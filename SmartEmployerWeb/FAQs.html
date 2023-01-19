@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>FAQs - Smart Employer</title>
+  <link rel="shortcut icon" href="images/icon.png" >
+  <meta name="theme-color" content="#F2F2F2">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css" >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>            
+
+  <script>
+        
+    $(document).ready(function(){
+           var x = localStorage.getItem("email");
+       var y = localStorage.getItem("password");
+       var z = localStorage.getItem("role");
+   
+   if (x=="" || y=="" || z==""){
+     document.getElementById("hideProfile").style.display = "none";
+   
+   
+   }
+   else{
+   
+     document.getElementById("hideNav").style.display = "none";
+     document.getElementById("hideLoggedout").style.display = "none";
+     document.getElementById("hideProfile").style.display = "inherit";
+   }
+   
+     
+   var link;
+   if (z=='candidate'){
+   
+   link='candidateLogin.html';
+   }
+   else{
+   link='employerLogin.html';
+   
+   }
+   
+   if (window.localStorage) {
+   $("#logout").on("click", function() {
+   
+   localStorage.setItem("email", "");
+   localStorage.setItem("password", "");
+   localStorage.setItem("role", "");
+   localStorage.setItem("id", "");
+   localStorage.setItem("event-logout", 'logout-' + Math.random());
+                       window.location.replace(link);
+                       return true;
+   
+   });  
+   }
+   window.addEventListener('storage', function (event) {
+               if (event.key == "event-logout") {
+                   window.location.replace(link);
+               }
+           }, false);
+   
+         });
+           </script>
+
+</head>
+<style>
+
+p{margin: 20px 0px;}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+.text{
+color: rgb(97, 93, 93);
+
+
+}
+.accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+
+.panel {
+  padding: 0px 18px;
+  background-color: rgb(248, 248, 248);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+ 
+}
+i{ display: block;
+  width: 100%;
+  height: auto;}
+</style>
+
+       
+ 
+
+  <nav class="navbar navbar-inverse" id="navbar"  role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myidname">    
+          <span class="icon-bar"></span>    
+          <span class="icon-bar"></span>    
+          <span class="icon-bar"></span>    
+      </button>    
+        <a class="navbar-brand" href="index.html"><img  src="images/selogo.png" class="logo"></a>
+      </div>
+      <div class="navbar-collapse collapse" id="myidname">  
+      <ul class="nav navbar-nav " id="hideNav">
+        <li><a href="about.html">Home</a></li>
+        
+        <li ><a href="Pricing.html">Pricing</a></li>
+        <li ><a href="Blog.html">Blog</a></li>
+        <li  class="active"><a href="FAQs.html">FAQs</a></li>
+        <li ><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" id="hideLoggedout" >
+      
+        <li class="dropdown" >
+          <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-user"></span> Sign Up
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" > 
+
+            <li><a class="dropdown-item" href="employerSignup.html">As Employer</a></li>
+            <li><a class="dropdown-item" href="candidateSignup.html">As JobSeeker</a></li>
+           
+          </ul>
+          
+        </li>
+    
+        <li class="dropdown"  >
+          <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-log-in"></span> Log In
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" > 
+  
+            <li ><a class="dropdown-item" href="employerLogin.html">As Employer</a></li>
+            <li><a class="dropdown-item" href="candidateLogin.html">As JobSeeker</a></li>
+           
+          </ul>
+        </li>
+   
+      </ul>
+      <ul class="nav navbar-nav navbar-right" id="hideProfile">
+        <li> <a href="jobFeed.php"><span class="glyphicon glyphicon-home" ></span> Home</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-bell"></span> Notifications</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-user"></span> Me
+            <span class="caret"></span>
+          </a>
+         
+          <ul class="dropdown-menu" > 
+
+            <li><a class="dropdown-item" href="candidateProfile.html">View Profile</a></li>
+            <li><a class="dropdown-item" href="myJobs.html">My Jobs</a></li>
+            <li><a class="dropdown-item" href="FAQs.html">FAQs</a></li>
+            <li><a class="dropdown-item" id="logout" href="#">Log Out</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>   
+    </div>
+  </nav>
+  <body>
+ 
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <h4 class="head" >Color Adjustment</h4>
+    <div class="sidenavIcon" id="monochrome">
+    <i  class="fa fa-moon-o" aria-hidden="true" ></i>
+    
+    <div class="overlay">
+      <div class="overlaytext">Convert to black and white colors</div>
+    </div>
+  </div>
+  </div>
+  <button onclick="topFunction()" id="scrollBtn"><span class="glyphicon glyphicon-chevron-up"></span></button>
+    <div class="main" >
+      <div style="margin:20px 40px;">
+    <br>
+   <center> <h2 class="text mainheadings" >FAQs</h2></center>
+   <br>
+   <center> <h4 class="text mainheadings" style="color: #444!important;">General Questions</h4></center>
+   <br>
+   <button class="accordion"> What is Smart Employer?</button>
+<div class="panel">
+  <p> Smart Employer is an application that is designed with an aim to make the process of recruitment more efficient and steady. 
+    It automates the recruitment process, saves time and improves recruitment process quality via disclosing the potential candidates for the job. As well as makes it convinient for the Job-Seekers to find related jobs according to their field of interest, apply with a single click/tap and appear at automated interviews. 
+   </p>
+</div>
+
+<button class="accordion"> What is Smart Employer's Pricing Policy?</button>
+<div class="panel">
+  <p> For pricing information, <a href="Pricing.html">Click here</a>.</p>
+</div>
+
+<button class="accordion"> How to contact Smart Employer's team?
+</button>
+<div class="panel">
+  <p> Its soo easy to contact us! Either contact us through the social handles, linked at the bottom of the page or <a href="contact.html">Click here</a>.
+</p>
+</div>
+
+
+<button class="accordion"> How secure my data is?
+</button>
+<div class="panel">
+  <p> Your data is completely secure with Smart Employer privacy policy. For a detailed information, read our <a href="PrivacyPolicy.html">Privacy Policy</a> .
+
+</p>
+</div>
+
+<button class="accordion">What is an automated interview?
+</button>
+<div class="panel">
+  <p>It can simply be defined as an interview conducted with the help of computing intelligence. The interview requires no human recruiter for assessment instead it is assessed via computing intelligence. Applicants are assessd on the basis of their answers and facial emotion recognition to Employer's set criteria. 
+</p>
+</div>
+
+
+<br>
+   <center> <h4 class="text mainheadings" style="color: #444!important;">Job-Seeker's FAQs</h4></center>
+   <br>
+
+
+   <button class="accordion"> How can I create a Job-Seeker account?
+  </button>
+  <div class="panel">
+    <p> <a href="candidateSignup.html">Click here</a> to sign up now!.
+
+    </p>
+  </div>
+
+   <button class="accordion"> How can I apply for a job?
+  </button>
+  <div class="panel">
+    <p> Create a Job-Seeker account, complete profile details, search and apply for interesting jobs.
+  </p>
+  </div>
+
+  <button class="accordion"> What are the prerequisites for applying for a job?
+  </button>
+  <div class="panel">
+    <p> One must have a Job-Seeker account and a complete profile to be able to apply for a job.
+  </p>
+  </div>
+
+  <button class="accordion"> Where can I find all my applied jobs?
+  </button>
+  <div class="panel">
+    <p> On the 'My Jobs' page you can track all your applied jobs. You can navigate to the 'My Jobs' page from the top navigation bar.
+  </p>
+  </div>
+
+
+   <br>
+   <center> <h4 class="text mainheadings" style="color: #444!important;">Employer's FAQs</h4></center>
+   <br>
+
+   <button class="accordion"> How can I create an Employer account?
+  </button>
+  <div class="panel">
+    <p> <a href="employerSignup.html">Click here</a> to sign up now!.
+
+    </p>
+  </div>
+
+
+
+   <button class="accordion"> How can I hire candidates?
+  </button>
+  <div class="panel">
+    <p>Create an Employer account, complete profile details, post job and enjoy hassle free recruitmnt.
+  </p>
+  </div>
+
+  <button class="accordion"> How can I post a job?
+  </button>
+  <div class="panel">
+    <p> Log into your account, in the 'Add New Recruitment' tab fill in all required fields (information), press 'POST' and VOLLAH! your job has been posted.
+
+    </p>
+  </div>
+
+<button class="accordion"> Where can I find all my posted jobs?
+  </button>
+  <div class="panel">
+    <p> All your posted jobs are in the 'All Recruitments' tab at your account.
+
+    </p>
+  </div>
+
+  <button class="accordion"> What is 'Talent Poll'?
+  </button>
+  <div class="panel">
+    <p> Talent Poll consists of all the candidates applied at any of your job posts over the time.
+
+    </p>
+  </div>
+
+</div></div>
+<button onclick="openNav()" id="accBtn" style="color: #F2F2F2 !important;" ><i class="fa fa-wheelchair" aria-hidden="true"></i>
+</button>
+    
+      <!-- Footer -->
+
+      <footer class="text-center text-white subfooter" id="subfooter">
+        <!-- Grid container -->
+        <div class="container p-4 ">
+          <!-- Section: Text -->
+          <section class="mb-4">
+          <!-- Section: Text -->
+          <!-- Section: Links -->
+          <section class="">
+            <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6 ">
+                <h4 class="text-uppercase">Quick Links</h4>
+      
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="about.html" class="text-white">About Us</a>
+                  </li>
+                  <li>
+                    <a href="contact.html" class="text-white">Contact Us</a>
+                  </li>
+                  <li>
+                    <a href="Pricing.html" class="text-white">Pricing</a>
+                  </li>
+                  <li>
+                    <a href="FAQs.html" class="text-white">FAQs</a>
+                  </li>
+                </ul>
+              </div>
+              <!--Grid column-->
+      
+              <!--Grid column-->
+              <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6">
+                <h4 class="text-uppercase">Explore More</h4>
+      
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="Blog.html" class="text-white">Blog</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Hire Candidates</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Hiring Glossary</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Latest Jobs</a>
+                  </li>
+                </ul>
+              </div>
+              <!--Grid column-->
+      
+              <!--Grid column-->
+              <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6">
+                <h4 class="text-uppercase">Policies</h4>
+      
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#!" class="text-white">Cookies</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Terms and Conditions</a>
+                  </li>
+                  <li>
+                    <a href="PrivacyPolicy.html" class="text-white">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="TermsofUse.html" class="text-white">Terms of Use</a>
+                  </li>
+                </ul>
+              </div>
+              <!--Grid column-->
+      
+              <!--Grid column-->
+              <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6">
+                <h4 class="text-uppercase">Find Us On</h4>
+      
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#!" class="text-white">Facebook</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Instagram</a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/smart_employer?s=20&t=_5xA0h_j3rWeNsDPNsv3cQ" class="text-white">Twitter</a>
+                  </li>
+
+                </ul>
+              </div>
+              <!--Grid column-->
+             
+            </div>
+            <!--Grid row-->
+                <!--Grid row new-->
+       
+              
+                <div class="row" style=" display: flex; justify-content: center;">
+                  <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                   <h4 class="text-uppercase">Download Now</h4>
+         
+                   <ul class="list-unstyled mb-0">
+                     <li>
+                       <div> <a href='https://play.google.com/store/apps/details?id=com.stagescycling.stages'>
+                         <img 
+                           class="android" 
+                           alt='Get it on Google Play' 
+                           src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' />
+                       </a>
+                     </div>
+                   </div>
+   
+                     </li>
+                   </ul>
+                 </div>
+                  <!--Grid row new end-->
+             <!--Grid row new-->
+            <div class="row" id="tselect" style=" display: flex; justify-content: center;" >
+            
+              <div   id="google_translate_element"></div>
+              </div>
+               <!--Grid row new end-->
+              
+          </section>
+          <!-- Section: Links -->
+   
+
+         
+ 
+        </div>
+        <!-- Grid container -->
+     
+   
+          <!-- Copyright -->
+          <div class="text-center p-3 copyrightfooter" id="copyrightfooter" style="background-color: #2C33BF !important;">
+            Copyright &copy; <script>document.write(new Date().getFullYear())</script>
+            <a class="text-white" href="about.html">SmartEmployer</a>
+          </div>
+          <!-- Copyright -->
+       </footer>
+      <!-- Footer -->
+      
+<script>
+    
+
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+  
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+      } 
+    });
+  }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <script src="scripting.js"></script>
+   <script src="scrollScript.js"></script>
+
+    </body>
+  
+</html>

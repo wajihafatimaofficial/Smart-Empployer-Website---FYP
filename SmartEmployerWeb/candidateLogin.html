@@ -1,0 +1,548 @@
+
+<html>
+
+  <head>
+    <title>Log In- Smart Employer</title>
+    <link rel="shortcut icon" href="images/icon.png" >
+    <meta name="theme-color" content="#F2F2F2">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,700,700i,900,900i" type="text/css" media="all">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>            
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+  </head>
+  
+  
+  <nav class="navbar navbar-inverse" id="navbar"  role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myidname">    
+          <span class="icon-bar"></span>    
+          <span class="icon-bar"></span>    
+          <span class="icon-bar"></span>    
+      </button>    
+      <a class="navbar-brand" href="index.html"><img  src="images/selogo.png" class="logo"></a>
+      </div>
+      <div class="navbar-collapse collapse" id="myidname">  
+      <ul class="nav navbar-nav " >
+        <li ><a href="about.html">Home</a></li>
+        <li><a href="Pricing.html">Pricing</a></li>
+        <li><a href="Blog.html">Blog</a></li>
+        <li><a href="FAQs.html">FAQs</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+       
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-user"></span> Sign Up
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" > 
+  
+            <li><a class="dropdown-item" href="employerSignup.html">As Employer</a></li>
+            <li><a class="dropdown-item" href="candidateSignup.html">As JobSeeker</a></li>
+           
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-log-in"></span> Log In
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" > 
+  
+            <li><a class="dropdown-item" href="employerLogin.html">As Employer</a></li>
+            <li><a class="dropdown-item" href="candidateLogin.html">As JobSeeker</a></li>
+           
+          </ul>
+        </li>
+      </ul>
+    </div>   
+    </div>
+  </nav>
+        
+  
+  
+  </div>
+  </div>
+  
+  <body id="myPage" data-spy="scroll" data-offset="50">
+    <!-- accessibility button and sidenav -->
+         <!-- side nav -->
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <!-- color b/w -->
+    <h4 class="head" >Color Adjustment</h4>
+    <div class="sidenavIcon" id="monochrome">
+    <i  class="fa fa-moon-o" aria-hidden="true" ></i>
+    <div class="overlay">
+      <div class="overlaytext">Convert to black and white colors</div>
+    </div>
+  </div>   <!-- color b/w end-->
+  </div>   <!-- side nav end-->
+    <!-- acc button -->
+  <button onclick="openNav()" id="accBtn" style="color: #F2F2F2 !important;" ><i class="fa fa-wheelchair" aria-hidden="true"></i>
+  </button>  <!-- acc button end-->
+    <!-- accessibility button and sidenav end-->
+    <button onclick="topFunction()" id="scrollBtn"><span class="glyphicon glyphicon-chevron-up"></span></button>
+  
+  <div class="container gy-0" >
+  
+    <div class="row gy-0 ">
+      <br>
+     <h1 style="text-align:center;color:black;">Welcome Back Seeker :)</h1> 
+     <br>
+     <p style="text-align:center;">To keep looking for better opportunities, please login with your email and password.</p>
+  <hr ></hr>
+  
+       <div class="col-sm-3 col-md-3 col-lg-3"></div>
+      <div class="col-sm-6 col-lg-6">
+     
+  
+    <form action="candidateLoginProcess.php" method="POST" name="login"  id="login">
+  
+  <div id="alert"></div>  
+  <div class="errormessage" id="error"></div>
+  <div class="form-group">
+    <div class="controls">
+      <label>Email</label>
+      <input  style="border-radius:25px;" required type="text" name="email"  class="email form-control" id="email" placeholder="user@somewhere.com" >
+      
+      </div>
+   
+  </div>
+  
+     
+  
+      <div class="form-group">
+        <div class="controls">
+          <label>Password</label>
+          <input style="border-radius:25px;" type="password" id="password" name="password"  placeholder="Password" class="form-control">
+         
+          </div>  
+      </div>
+    
+      <div class="row">
+        <button  style="margin:auto;margin-bottom:2%;border-radius:25px;background-color: #2C33BF;color: white;" type="submit" id="submit" class="btn btn-secondary btn-lg btn-block" value="save" name="save">Log In</button>
+      </div>
+      <div class="row">
+      <a href="candidateSignup.html" style="color: #640068;text-decoration: none;"><h5 style="text-align:center;">Don't have a Job-Seeker account? Register now!</a>
+      </div>
+      <br>
+  </div>
+  
+  <div class="col-sm-4"></div>
+  
+  
+  <div class="col-sm-4"></div>
+  
+  </form>
+  
+   
+  
+  
+  </div>
+  
+  <div class="col-md-3 col-lg-3"></div>
+  
+  </div>
+  
+  </div>
+  
+  
+       <!-- Footer -->
+
+       <footer class="text-center text-white subfooter" id="subfooter">
+        <!-- Grid container -->
+        <div class="container p-4 ">
+          <!-- Section: Text -->
+          <section class="mb-4">
+          <!-- Section: Text -->
+          <!-- Section: Links -->
+          <section class="">
+            <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6 ">
+                <h4 class="text-uppercase">Quick Links</h4>
+      
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="about.html" class="text-white">About Us</a>
+                  </li>
+                  <li>
+                    <a href="contact.html" class="text-white">Contact Us</a>
+                  </li>
+                  <li>
+                    <a href="Pricing.html" class="text-white">Pricing</a>
+                  </li>
+                  <li>
+                    <a href="FAQs.html" class="text-white">FAQs</a>
+                  </li>
+                </ul>
+              </div>
+              <!--Grid column-->
+      
+              <!--Grid column-->
+              <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6">
+                <h4 class="text-uppercase">Explore More</h4>
+      
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="Blog.html" class="text-white">Blog</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Hire Candidates</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Hiring Glossary</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Latest Jobs</a>
+                  </li>
+                </ul>
+              </div>
+              <!--Grid column-->
+      
+              <!--Grid column-->
+              <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6">
+                <h4 class="text-uppercase">Policies</h4>
+      
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#!" class="text-white">Cookies</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Terms and Conditions</a>
+                  </li>
+                  <li>
+                    <a href="PrivacyPolicy.html" class="text-white">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="TermsofUse.html" class="text-white">Terms of Use</a>
+                  </li>
+                </ul>
+              </div>
+              <!--Grid column-->
+      
+              <!--Grid column-->
+              <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6">
+                <h4 class="text-uppercase">Find Us On</h4>
+      
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#!" class="text-white">Facebook</a>
+                  </li>
+                  <li>
+                    <a href="#!" class="text-white">Instagram</a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/smart_employer?s=20&t=_5xA0h_j3rWeNsDPNsv3cQ" class="text-white">Twitter</a>
+                  </li>
+
+                </ul>
+              </div>
+              <!--Grid column-->
+             
+            </div>
+            <!--Grid row-->
+                <!--Grid row new-->
+       
+              
+                <div class="row" style=" display: flex; justify-content: center;">
+                  <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                   <h4 class="text-uppercase">Download Now</h4>
+         
+                   <ul class="list-unstyled mb-0">
+                     <li>
+                       <div> <a href='https://play.google.com/store/apps/details?id=com.stagescycling.stages'>
+                         <img 
+                           class="android" 
+                           alt='Get it on Google Play' 
+                           src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' />
+                       </a>
+                     </div>
+                   </div>
+   
+                     </li>
+                   </ul>
+                 </div>
+                  <!--Grid row new end-->
+             <!--Grid row new-->
+            <div class="row" id="tselect" style=" display: flex; justify-content: center;" >
+            
+              <div   id="google_translate_element"></div>
+              </div>
+               <!--Grid row new end-->
+              
+          </section>
+          <!-- Section: Links -->
+   
+
+         
+ 
+        </div>
+        <!-- Grid container -->
+     
+   
+          <!-- Copyright -->
+          <div class="text-center p-3 copyrightfooter" id="copyrightfooter" style="background-color: #2C33BF !important;">
+            Copyright &copy; <script>document.write(new Date().getFullYear())</script>
+            <a class="text-white" href="about.html">SmartEmployer</a>
+          </div>
+          <!-- Copyright -->
+       </footer>
+      <!-- Footer -->
+        <button onclick="topFunction()" id="scrollBtn"><span class="glyphicon glyphicon-chevron-up"></span></button>
+  
+
+  <script>
+    var x = localStorage.getItem("email");
+    var y = localStorage.getItem("password");
+    var z = localStorage.getItem("role");
+
+var link;
+if (z=='candidate'){
+
+link='candidateLogin.html';
+}
+else{
+link='employerLogin.html';
+
+}
+
+if (window.localStorage) {
+$("#logout").on("click", function() {
+
+localStorage.setItem("email", "");
+localStorage.setItem("password", "");
+localStorage.setItem("role", "");
+localStorage.setItem("id", "");
+
+localStorage.setItem("event-logout", 'logout-' + Math.random());
+                    window.location.replace(link);
+                    return true;
+
+});  
+}
+
+window.addEventListener('storage', function (event) {
+            if (event.key == "event-logout") {
+                window.location.replace(link);
+            }
+        }, false);
+    $(document).ready(function(){
+    
+      
+     function countryChange(country) {
+           var selectedText = country.options[country.selectedIndex].innerHTML;
+           var selectedValue = country.value;
+           alert("Selected Text: " + selectedText + " Value: " + selectedValue);
+       }
+    
+    
+    function printError(elemId, hintMsg) {
+       document.getElementById(elemId).innerHTML = hintMsg;
+       
+    }
+    
+    
+     var lookup = {
+      'Australia': ['Sydney', 'Melbourne', 'Brisbane','	Perth','	Adelaide','Gold Coast – Tweed Heads','Newcastle – Maitland','Canberra – Queanbeyan','Central Coast','Sunshine Coast','	Wollongong','Geelong','Hobart','Townsville','Cairns','	Toowoomba','Darwin','Ballarat','Bendigo','Albury – Wodonga','Launceston','	Mackay','Rockhampton','	Bunbury','Coffs Harbour'],
+      'Canada': ['Toronto', 'Montreal','	Vancouver','Ottawa','Edmonton','Calgary','Quebéc','Manitoba','British Columbia','New Brunswick','Newfoundland and Labrador','Nova Scotia','Ontario','Prince Edward Island','Saskatchewan','Northwest Territories','Nunavut','Yukon'],
+      'Pakistan': ['	Nowshera','Dadu','	Charsada','Swabi','Tando Allahyar','Nawabshah','Jhelum','Khanewal','	Kohat','Jacobabad','Abbottabad','Dera Ismail Khan','Vehari','Karachi','Lahore','Faisalabad','Rawalpindi','Multan','Gujranwala','Hyderabad','Peshawar','Islamabad','Quetta','Sargodha','Sialkot','Bahawalpur','Sukkur','Mardan','Larkana'],
+      'United Kingdom':['Business Administration','Commerce','Economics'],
+    };
+    
+    // When an option is changed, search the above for matching choices
+    $('#country').on('change', function() {
+      // Set selected option as variable
+      var selectValue = $(this).val();
+    
+      // Empty the target field
+      $('#city').empty();
+      
+      // For each chocie in the selected option
+      for (i = 0; i < lookup[selectValue].length; i++) {
+         // Output choice in the target field
+         $('#city').append("<option value='" + lookup[selectValue][i] + "'>" + lookup[selectValue][i] + "</option>");
+      }
+    });
+    
+    
+    
+    
+     var $mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+     $('#email').on('keypress keydown keyup',function(){
+                   var eme=document.getElementById("email");
+                if (!$(email).val().match($mailformat)) {
+                 // there is a mismatch, hence show the error message
+                   
+                     
+                }
+              else{
+                   // else, do not display message
+                  
+                  }
+            });
+    
+           
+    
+     $('#submit').click(function(e){
+     
+           e.preventDefault();
+           //saving data
+           $("#submit").attr("disabled", false);
+          
+           var email = $("#email").val();
+           var password = $("#password").val();
+          
+          if( email=="" || password=="" 
+         ){
+           
+          
+           
+        Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: "All fields are required",
+
+})
+         }
+         else{
+          
+    
+    
+    
+     //email pattern & password check
+     var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+     var check=document.getElementById("email");
+     
+    
+     if(check.value.match(mailformat)){
+           
+      let cookie = {};
+  document.cookie.split(';').forEach(function(el) {
+    let [key,value] = el.split('=');
+    cookie[key.trim()] = value;
+    localStorage.setItem("profileStatus", cookie['profileStatus']);
+    
+  })
+  var pstatus = localStorage.getItem("profileStatus");
+         
+         $.ajax({
+                type: "POST",
+                url: "candidateLoginProcess.php",
+                dataType: "json",
+                data: {email:email,  password:password},
+                success : function(data){
+                    if (data.code == "200"){
+                      if(pstatus=='0'){
+
+                        window.location.replace('candidateProfileComplete.html');
+                      }
+                      else{
+    window.location.replace('jobFeed.php');}
+
+            localStorage.setItem("email", email);
+            localStorage.setItem("password", password);
+            localStorage.setItem("role", 'candidate');
+       } 
+    else {
+      Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: data.msg,
+
+})
+    } 
+    
+    
+                }
+           
+    
+    
+     });
+        
+    }//if end                        
+    }
+    
+    
+    
+    
+     //invalid email alert
+     var a=check.value;
+     if(!a.match(mailformat))
+     {
+      Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: "Please enter a valid email",
+
+})
+
+                 
+     } 
+    //if end   
+    
+    //empty fields alert
+    
+    
+    
+    });
+     
+     
+    
+    // Initialize Tooltip
+    $('[data-toggle="tooltip"]').tooltip(); 
+     
+     // Add smooth scrolling to all links in navbar + footer link
+     $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    
+       // Make sure this.hash has a value before overriding default behavior
+       if (this.hash !== "") {
+    
+         // Prevent default anchor click behavior
+         event.preventDefault();
+    
+         // Store hash
+         var hash = this.hash;
+    
+         // Using jQuery's animate() method to add smooth page scroll
+         // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+         $('html, body').animate({
+           scrollTop: $(hash).offset().top
+         }, 900, function(){
+      
+           // Add hash (#) to URL when done scrolling (default click behavior)
+           window.location.hash = hash;
+         });
+       } // End if
+     });
+    });
+    
+    
+    
+  
+    </script>
+    
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+    <script src="scripting.js"></script>
+    <script src="scrollScript.js"></script>
+  </body>
+  
+  </html>

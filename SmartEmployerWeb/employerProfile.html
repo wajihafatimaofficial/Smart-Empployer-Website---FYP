@@ -1,0 +1,947 @@
+<head>
+  <title>Profile</title>
+  <link rel="shortcut icon" href="images/icon.png" >
+  <meta name="theme-color" content="#F2F2F2">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css" >
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>            
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
+    </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+*{
+    margin:0;
+    padding:0;
+}
+
+
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 1850px;
+  left: 20;
+  right: 20;
+  
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: #fff; 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #e9e9e9; 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: DodgerBlue !important; 
+  color: #ffffff; 
+}
+
+
+.container{
+font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+.card{
+    height:350px;
+    width:320px;
+    background-color:#fff;
+    border-radius:10px;
+    position:relative;
+    overflow:hidden;
+    font-family: 'Poppins', sans-serif;
+    cursor:pointer;
+    
+}
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+.overlay .fa-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #fff;
+}
+.overlay img {
+    object-fit: cover;
+    transition: all 2s;
+    height: 100%;
+    width: 100%
+}
+.d-none {
+    display: none;
+}
+.upperborder{
+  
+    height:20%;
+    width:100%;
+    background-image: linear-gradient(to right,#2C33BF,#555BD9);;
+}
+.fa-plus{
+    position:absolute;
+          color:white;
+          top:-100px;
+       right:10px;
+     transition:all 0.5s;
+}
+.card:hover .fa-plus{
+    position:absolute;
+    top:10px;
+      
+}
+.plusred{
+    color:purple !important;
+}
+
+
+.image{
+    position:relative;
+}
+.image span {
+    height: 120px;
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #ccc;
+    border: 5px solid #fff;
+    position:absolute;
+    top:-70px;
+    left: 50%;
+  transform: translateX(-50%);
+}
+.image span img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover
+}
+.text{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    margin-top:5%;
+}
+.text p{
+    font: size 2em;;
+}
+
+.social{
+     margin-left:15px;
+    color:purple;
+    position:relative;
+}
+.social i:nth-child(1){
+    position:absolute;
+    top:19px;
+   
+    left:-100px;
+    transition:all 0.5s;
+    
+}
+.card:hover i:nth-child(1){
+    position:absolute;
+     left:30px;
+     transition-delay:0.9s;
+}
+.social i:nth-child(2){
+    position:absolute;
+    top:19px;
+    
+    left:-100px;
+    transition:all 0.5s;
+
+}
+.card:hover i:nth-child(2){
+    position:absolute;
+     left:100px;
+     transition-delay:0.6s;
+}
+.social i:nth-child(3){
+    position:absolute;
+    top:19px;
+    
+    left:-100px;
+    transition:all 0.5s;
+
+}
+.card:hover i:nth-child(3){
+    position:absolute;
+    left:175px;
+    transition-delay:0.3s;
+}
+.social i:nth-child(4){
+    position:absolute;
+    top:19px;
+  
+    left:-100px;
+    transition:all 0.5s;
+
+}
+.card:hover i:nth-child(4){
+    position:absolute;
+    left:245px;
+    
+}
+section { 
+  display: block;
+  margin: 3%;
+
+}
+
+span{display:inline-block ;
+
+}
+
+.cardsection{background-color: #ffffff;   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);transition: 0.3s;}
+
+.i{  padding-right: 0%;
+    right:  50%;
+  transform: translateX(50%);
+  }
+
+.i a {color: #49494d;}
+ 
+ </style>
+  <nav class="navbar navbar-inverse" id="navbar"  role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myidname">    
+          <span class="icon-bar"></span>    
+          <span class="icon-bar"></span>    
+          <span class="icon-bar"></span>    
+      </button>    
+      <!-- <a class="navbar-brand" href="index.html"><img  src="images/selogo.png" class="logo"></a> -->
+      </div>
+      <div class="navbar-collapse collapse" id="myidname">  
+      
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="jobFeed.php"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-bell"></span> Notifications</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="glyphicon glyphicon-user"></span> Me
+            <span class="caret"></span>
+          </a>
+         
+          <ul class="dropdown-menu" > 
+
+            <li><a class="dropdown-item" href="candidateProfile.html">View Profile</a></li>
+            <li><a class="dropdown-item" href="myJobs.html">My Jobs</a></li>
+            <li><a class="dropdown-item" href="FAQs.html">FAQs</a></li>
+            <li><a class="dropdown-item" id="logout" href="#">Log Out</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>   
+    </div>
+  </nav>
+
+ <body style="  background-color: #F2F2F2;">
+<div class="container-fluid cardsection">
+    <div class="row">
+        <div class="overlay d-none"> 
+            <small class="fa fa-close"></small>
+            <img src="https://imgur.com/SSCE2Uj.jpg"> 
+        </div>
+        <div class="upperborder">
+        </div>
+        <it class="fa fa-plus"></it>
+        <div class="image">
+            <span><img id="userimage" src="https://imgur.com/SSCE2Uj.jpg"></span>
+        </div>
+       
+    </div>
+
+
+    <div class="row">
+     <div class="text ">    
+        <h1>Adam Terner</h1>
+        <p>Project Manager</p>
+        <p>Karachi, Pakistan</p>
+     </div> 
+    </div>
+</div>  
+<br>
+<div class="container cardsection" >
+    <div class="row">
+        <section>
+      <span>      
+  <h1>About</h1>
+</span>
+<div class="form-group">
+  <div class="controls">
+<textarea rows="5" cols="10" type="text" id="about"  name="about" class="form-control text-justify" placeholder="Write something interesting about yourself..." ></textarea>
+<br></br>
+<a href="#" style="color:#e01f1f;" class="reset_about">Reset</a>
+<a class="save_about" href="#" style="float:right;color:green;" >Save</a>
+</div>
+         
+</div>
+
+
+</section>
+       </div>
+
+
+    </div>
+
+<br>
+       
+    <div class="container cardsection" >
+        <div class="row">
+            <section >
+          <span  style=" display: flex;
+          justify-content: space-between;">      
+      <h1  style="float: left;width:60%;
+      text-align:left;" >Experience</h1>
+      <h1 class="" data-toggle="modal" data-target="#exampleModal"  style="float: right; width:40%;
+      text-align:right;">+</h1>
+    </span>
+    <div id="data-experience" class="input_fields_wrap">
+   
+    </div> 
+    
+    
+   
+
+    
+    
+    </section>
+           </div>
+    
+        </div>
+
+
+        <br>
+
+    <div class="container cardsection" >
+        <div class="row">
+            <section>
+          <span>      
+      <h1>Education</h1>
+    </span>
+    <span class="i">
+      <a href="#"><i class='fa-solid fa fa-edit fa-lg'></i></a>
+    </span>
+    <h3>Qualification</h3>
+    <h5>Institute Name</h5>
+    <h6> 2019 - 2022</h6>
+
+    <h3>Qualification</h3>
+    <h5>Institute Name</h5>
+    <h6> 2019 - 2022</h6>
+
+
+ 
+    </section>
+           </div>
+    
+        </div>
+
+        <br>
+
+        <div class="container cardsection" >
+            <div class="row">
+                <section>
+              <span>      
+          <h1>Skills</h1>
+        </span>
+        <span class="i">
+         
+        </span>
+        <div class="form-group">
+          <div class="controls">
+            <input style="border-radius:25px;" id="requiredSkills" type="text" name="requiredSkills"  class="form-control" placeholder="Required Skills">
+           <br>
+            <textarea  disabled  rows="3" cols="10" type="text" id="skills"  name="skills" class="form-control" placeholder="" ></textarea>
+          </div>
+    
+        </div>
+        
+    
+     
+        </section>
+               </div>
+        
+            </div>       
+        <br>
+
+        <div class="container cardsection" >
+            <div class="row">
+                <section>
+              <span>      
+          <h1>Certification</h1>
+        </span>
+        <span class="i">
+          <a href="#"><i class='fa-solid fa fa-edit fa-lg'></i></a>
+        </span>
+        <h3>Certificate</h3>
+        <h5>Issuing Organization</h5>
+        <h6>2022</h6>
+    
+        <h3>Certificate</h3>
+        <h5>Issuing Organization</h5>
+        <h6>2022</h6>
+    
+    
+     
+        </section>
+               </div>
+        
+            </div>
+    
+            <br>
+
+            <div class="container cardsection" >
+                <div class="row">
+                    <section>
+                  <span>      
+              <h1>Volueentring</h1>
+            </span>
+            <span class="i">
+              <a href="#"><i class='fa-solid fa fa-edit fa-lg'></i></a>
+            </span>
+            <h3>Role</h3>
+            <h5>Organization</h5>
+            <h6>2022</h6>
+            <h6>Cause</h6>
+        
+            <h3>Role</h3>
+            <h5>Organization</h5>
+            <h6>2022</h6>
+            <h6>Cause</h6>
+        
+        
+         
+            </section>
+                   </div>
+            
+                </div>
+     
+      <br>
+ <!-- Footer -->
+
+ <footer class="text-center text-white subfooter" id="subfooter">
+  <!-- Grid container -->
+  <div class="container p-4 ">
+    <!-- Section: Text -->
+    <section class="mb-4">
+    <!-- Section: Text -->
+    <!-- Section: Links -->
+    <section class="">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6 ">
+          <h4 class="text-uppercase">Quick Links</h4>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="about.html" class="text-white">About Us</a>
+            </li>
+            <li>
+              <a href="contact.html" class="text-white">Contact Us</a>
+            </li>
+            <li>
+              <a href="Pricing.html" class="text-white">Pricing</a>
+            </li>
+            <li>
+              <a href="FAQs.html" class="text-white">FAQs</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6">
+          <h4 class="text-uppercase">Explore More</h4>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="Blog.html" class="text-white">Blog</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Hire Candidates</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Hiring Glossary</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Latest Jobs</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6">
+          <h4 class="text-uppercase">Policies</h4>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Cookies</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Terms and Conditions</a>
+            </li>
+            <li>
+              <a href="PrivacyPolicy.html" class="text-white">Privacy Policy</a>
+            </li>
+            <li>
+              <a href="TermsofUse.html" class="text-white">Terms of Use</a>
+            </li>
+          </ul>
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0 col-xs-6 col-sm-6">
+          <h4 class="text-uppercase">Find Us On</h4>
+
+          <ul class="list-unstyled mb-0">
+            <li>
+              <a href="#!" class="text-white">Facebook</a>
+            </li>
+            <li>
+              <a href="#!" class="text-white">Instagram</a>
+            </li>
+            <li>
+              <a href="https://twitter.com/smart_employer?s=20&t=_5xA0h_j3rWeNsDPNsv3cQ" class="text-white">Twitter</a>
+            </li>
+
+          </ul>
+        </div>
+        <!--Grid column-->
+       
+      </div>
+      <!--Grid row-->
+          <!--Grid row new-->
+ 
+        
+          <div class="row" style=" display: flex; justify-content: center;">
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+             <h4 class="text-uppercase">Download Now</h4>
+   
+             <ul class="list-unstyled mb-0">
+               <li>
+                 <div> <a href='https://play.google.com/store/apps/details?id=com.stagescycling.stages'>
+                   <img 
+                     class="android" 
+                     alt='Get it on Google Play' 
+                     src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png' />
+                 </a>
+               </div>
+             </div>
+
+               </li>
+             </ul>
+           </div>
+            <!--Grid row new end-->
+       <!--Grid row new-->
+      <div class="row" id="tselect" style=" display: flex; justify-content: center;" >
+      
+        <div   id="google_translate_element"></div>
+        </div>
+         <!--Grid row new end-->
+        
+    </section>
+    <!-- Section: Links -->
+
+    <div class="modal fade modal-texts" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title " id="exampleModalLabel">Add Experience</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body Input-modals">
+            <div><div>
+              <h3 id="pp">Job Role</h3><input type="text" id="jobRole"  name="jobRole" placeholder="Enter your role here.." style="border-left:0px; border-right:0px;border-top:0px; border-bottom: 1px solid rgba(0,0,0,0.2);width:100%;height:40px;" /></div>
+              <h3>Organization Name</h3><input type="text" id="orgName" name="orgName" style="border-left:0px; border-right:0px;border-top:0px; border-bottom: 1px solid rgba(0,0,0,0.2);width:100%;height:40px;" placeholder="Enter organization name here.." />
+              <h3>Start Date</h3>
+              <div>
+                <input style="border-radius:25px;" type="date"  id="startdate" name="startdate"  class="form-control" placeholder="startdate"><h3>End Date</h3>
+                <input style="border-radius:25px;" type="date"  id="enddate" name="enddate"  class="form-control" placeholder="enddate"><br></br></div>
+              <a href="#" style="color:#e01f1f;" data-dismiss="modal" aria-label="Close"  class="remove_field">Discard</a>&nbsp;
+              <a href="#" style="float:right;color:green;" class="save_field">Add</a>
+            </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+   
+
+  </div>
+  <!-- Grid container -->
+
+
+    <!-- Copyright -->
+    <div class="text-center p-3 copyrightfooter" id="copyrightfooter" style="background-color: #2C33BF !important;">
+      Copyright &copy; <script>document.write(new Date().getFullYear())</script>
+      <a class="text-white" href="about.html">SmartEmployer</a>
+    </div>
+    <!-- Copyright -->
+ </footer>
+<!-- Footer -->
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+        <script>
+
+//language translator
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+  }
+    //prevent going back
+        function disableBack() { window.history.forward(); }
+          setTimeout("disableBack()", 0);
+          window.onunload = function () { null };      
+  
+        $(window).on('load',function(){
+
+  
+   //hide google powered by 
+  $(".goog-logo-link").empty();
+    $('.goog-te-gadget').html($('.goog-te-gadget').children());
+
+  
+  });
+        
+          $(document).ready(function() {
+            
+            
+      var max_fields      = 10; //maximum input boxes allowed
+      var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+      var add_button      = $(".addExp"); //Add button ID
+      var exp=[];
+    var tbcount = 1; //initlal text box count
+ 
+
+    
+    $(".save_field").on("click", function(e){ //user click on remove text
+        e.preventDefault();    
+        var jobRole = document.getElementById("jobRole");
+        var orgName = document.getElementById("orgName");
+        var startdate = document.getElementById("startdate");
+        var enddate = document.getElementById("enddate");
+        if(jobRole.value!="" && orgName.value!="" && startdate.value!="" && enddate.value!=""){
+  
+        var data = {
+            "jobRole":jobRole.value,
+            "orgName":orgName.value,
+            "startdate":startdate.value,
+            "enddate":enddate.value
+         };
+        //convert JavaScript object to JSON
+        var a=(data);
+        exp.push(a);
+        var experience=exp.toString();
+        
+     //saraib
+     let jobArray = exp.map(function(element){
+    return element.jobRole ;
+});
+let orgArray = exp.map(function(element){
+    return element.orgName ;
+});
+
+let stardateArray = exp.map(function(element){
+    return element.startdate ;
+});
+
+let enddateArray = exp.map(function(element){
+    return element.enddate ;
+});
+
+console.log("jobRole:"+" "+jobArray)
+console.log("orgName:"+" "+orgArray)
+console.log("Startdate:"+" "+stardateArray)
+console.log("Enddate:"+" "+enddateArray)
+for(i=0;i<=3;i++){
+document.getElementById("data-experience").innerHTML+=
+`
+
+`
+}
+console.log("Experience:"+jobArray[0]+" "+orgArray[0]+" "+ stardateArray[0]+" "+enddateArray[0])
+Swal.fire({
+  position: 'center',
+  icon: 'success',
+  title: 'Experience has been added.',
+  showConfirmButton: false,
+  timer: 1500
+})
+
+        }
+
+        else{
+          Swal.fire({
+  icon: 'error',
+  title: 'Oops...',
+  text: 'All fields are required!',
+
+})
+        }
+
+    //     $.ajax({
+    //             type: "POST",
+    //             url: "newExperience.php",
+    //             dataType: "json",
+    //             data: {experience:experience},
+    //             success : function(data){
+    //                 if (data.code == "200"){
+    //                      alert('exp added');
+     
+    //                   }
+    //                 }
+    
+    //  });//ajax end       
+
+    
+
+    }); 
+
+
+    $(".save_about").click(function(e){ //on add input button click
+
+     e.preventDefault();
+    //  var abouttxt = document.getElementById("about").value;
+    //     $.ajax({
+    //             type: "POST",
+    //             url: "newAbout.php",
+    //             dataType: "json",
+    //             data: {abouttxt:abouttxt},
+    //             success : function(data){
+    //                 if (data.code == "200"){
+    //                      alert('About added');
+    //                      $("#about").prop('disabled', true);
+    //                   }
+    //                 }
+    
+    //  });//ajax end 
+    });   
+            var x = localStorage.getItem("email");
+            var y = localStorage.getItem("password");
+            var z = localStorage.getItem("role");
+            var link;
+       
+            if (z=='candidate'){
+        
+              link='candidateLogin.html';
+        }
+        if (z=='employer'){
+          link='employerLogin.html';
+        }
+        else{
+          link='index.html';
+        
+        }
+            if (window.localStorage) {
+        
+        $("#logout").on("click", function() {
+        
+        localStorage.setItem("email", "");
+        localStorage.setItem("password", "");
+        localStorage.setItem("role", "");
+        
+        localStorage.setItem("event-logout", 'logout-' + Math.random());
+                            window.location.replace(link);
+                            return true;
+        
+        });  
+        }
+
+        window.addEventListener('storage', function (event) {
+                    if (event.key == "event-logout") {
+                        window.location.replace(link);
+                    }
+                }, false);
+        
+        
+       
+        
+        var userimage=document.querySelector("#userimage");
+        var overlay=document.querySelector(".overlay");
+        var cross=document.querySelector(".overlay .fa-close");
+        var plus=document.querySelector(".fa-plus");
+        
+        plus.addEventListener('click',function(){
+            plus.classList.toggle('plusred');
+        });
+        
+        userimage.addEventListener('click',function(){
+        overlay.classList.remove('d-none');
+        });
+        
+        
+        cross.addEventListener('click',function(){
+        overlay.classList.add('d-none');
+        });
+
+        
+      var skills=[]; 
+      var fields=[]; 
+      
+      function autocomplete(inp, arr) {
+/*the autocomplete function takes two arguments,
+the text field element and an array of possible autocompleted values:*/
+var currentFocus;
+/*execute a function when someone writes in the text field:*/
+inp.addEventListener("input", function(e) {
+    var a, b, i, val = this.value;
+    /*close any already open lists of autocompleted values*/
+    closeAllLists();
+    if (!val) { return false;}
+    currentFocus = -1;
+    /*create a DIV element that will contain the items (values):*/
+    a = document.createElement("DIV");
+    a.setAttribute("id", this.id + "autocomplete-list");
+    a.setAttribute("class", "autocomplete-items");
+    /*append the DIV element as a child of the autocomplete container:*/
+    this.parentNode.appendChild(a);
+    /*for each item in the array...*/
+    for (i = 0; i < arr.length; i++) {
+      /*check if the item starts with the same letters as the text field value:*/
+      if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+        /*create a DIV element for each matching element:*/
+        b = document.createElement("DIV");
+        /*make the matching letters bold:*/
+        b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+        b.innerHTML += arr[i].substr(val.length);
+        /*insert a input field that will hold the current array item's value:*/
+        b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+        /*execute a function when someone clicks on the item value (DIV element):*/
+        b.addEventListener("click", function(e) {
+            /*insert the value for the autocomplete text field:*/
+            inp.value = this.getElementsByTagName("input")[0].value;
+ 
+
+var skillValue=$("#requiredSkills").val();   
+if(allskills.includes(skillValue))  {  
+ 
+ skills.push(skillValue);
+ let sskills = skills.toString();
+ $("#skills").val(sskills);
+ 
+ document.getElementById('requiredSkills').value=null;
+        }
+            /*close the list of autocompleted values,
+            (or any other open lists of autocompleted values:*/
+            closeAllLists();
+        });
+        
+        a.appendChild(b);
+      }
+    }
+});
+/*execute a function presses a key on the keyboard:*/
+inp.addEventListener("keydown", function(e) {
+    var x = document.getElementById(this.id + "autocomplete-list");
+    if (x) x = x.getElementsByTagName("div");
+    if (e.keyCode == 40) {
+      /*If the arrow DOWN key is pressed,
+      increase the currentFocus variable:*/
+      currentFocus++;
+      /*and and make the current item more visible:*/
+      addActive(x);
+    } else if (e.keyCode == 38) { //up
+      /*If the arrow UP key is pressed,
+      decrease the currentFocus variable:*/
+      currentFocus--;
+      /*and and make the current item more visible:*/
+      addActive(x);
+    } else if (e.keyCode == 13) {
+      /*If the ENTER key is pressed, prevent the form from being submitted,*/
+      e.preventDefault();
+      if (currentFocus > -1) {
+        /*and simulate a click on the "active" item:*/
+        if (x) x[currentFocus].click();
+      }
+    }
+});
+function addActive(x) {
+  /*a function to classify an item as "active":*/
+  if (!x) return false;
+  /*start by removing the "active" class on all items:*/
+  removeActive(x);
+  if (currentFocus >= x.length) currentFocus = 0;
+  if (currentFocus < 0) currentFocus = (x.length - 1);
+  /*add class "autocomplete-active":*/
+  x[currentFocus].classList.add("autocomplete-active");
+}
+function removeActive(x) {
+  /*a function to remove the "active" class from all autocomplete items:*/
+  for (var i = 0; i < x.length; i++) {
+    x[i].classList.remove("autocomplete-active");
+  }
+}
+function closeAllLists(elmnt) {
+  /*close all autocomplete lists in the document,
+  except the one passed as an argument:*/
+  var x = document.getElementsByClassName("autocomplete-items");
+  for (var i = 0; i < x.length; i++) {
+    if (elmnt != x[i] && elmnt != inp) {
+      x[i].parentNode.removeChild(x[i]);
+    }
+  }
+}
+/*execute a function when someone clicks in the document:*/
+document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
+});
+}
+var allskills = [".NET Framework","A++",'Accounting','Acount Management','Adobe After Effect','Adobe Creative Suit','Adobe InDesign','Adobe Photoshop','Advertising',
+'Agile Methodologies','Ajax','Analytical skills','Angular JS','AutoCAD','Banking','Blogging','Brand Development','Budgeting','Business Analysis',
+'Business Development','Business Intelligence','Business Planning','Business Process Development','Business Strategy','C (Programming Language)','C#',
+'C++','Change Management','Communication skills','Construction Management','Content Writing','Contract Management','Cross-functional Team Leadership',
+'CSS','Customer Relationship Management','Data Analysis','Data Entry','Database','E-Commerce','Editing','Email Marketing','ERP'
+,'Event Management','Event Planning','Figma','Financial Accounting','Financial Management','Forecasting','Git','Graphic Designing',
+'HR Consulting','HTML','Java','Adobe llustrator','Java','JavaScript','JavaServer Pages (JSP)','Jira','Joomla','JSON','Kaizen','Kanban','Keyword Research',
+'Lead Generation','Leadership Skills','Lean Manufacturing','Legal Writing','Linux','Microsoft Excel','Microsoft Office','Microsoft PowerPoint','MYSQL','Network Security',
+'Networking','Neywork Administration','Node JS','Online Advertising','Oracle Dataase','PHP','Presentation Skills','Problem-solving Skills',
+'Product Development','Python','React Native','Requirements Analysis','Research and Development','Ruby','Slack','Social Media Management','Social Media Marketing','Software as a Service (SaaS)',
+'Software Development Life Cycle (SDLC)','SQL','Supply Change Management','Team Building','Technical Skills','Technical Writing','User Experience (UX)',
+'User Interface (UI)','Visual Design','Web Design','Web Development'
+
+];
+/*initiate the autocomplete function on the "fieldOfStudy" element, and pass along the countries array as possible autocomplete values:*/
+
+autocomplete(document.getElementById("requiredSkills"), allskills);
+
+
+      });  
+        
+        
+        </script>
+    </body>
+  </html>
